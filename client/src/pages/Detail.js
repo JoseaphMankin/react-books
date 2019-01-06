@@ -23,7 +23,7 @@ class Detail extends Component {
           <Col size="md-12">
             <Jumbotron>
               <h1>
-                {this.state.book.title} by {this.state.book.author}
+                {this.state.book.title} by {this.state.book.authors}
               </h1>
             </Jumbotron>
           </Col>
@@ -33,14 +33,18 @@ class Detail extends Component {
             <article>
               <h1>Synopsis</h1>
               <p>
-                {this.state.book.synopsis}
+                {this.state.book.description}
               </p>
+              <p>
+                <a href={this.state.book.link} target="_blank" rel="noopener noreferrer">Link to Book</a>
+              </p>
+              {/* <Link to={this.state.book.link}>Link to Book</Link> */}
             </article>
           </Col>
         </Row>
         <Row>
           <Col size="md-2">
-            <Link to="/">← Back to Authors</Link>
+            <Link to="/savedBooks">← Back to Saved Books</Link>
           </Col>
         </Row>
       </Container>
