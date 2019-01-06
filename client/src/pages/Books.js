@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import SaveBtn from "../components/SaveBtn";
 import Jumbotron from "../components/Jumbotron";
 import API from "../utils/API";
-import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
 import { List, ListItem } from "../components/List";
 import { Input, FormBtn } from "../components/Form";
@@ -108,11 +107,11 @@ class Books extends Component {
           <List>
           {this.state.searchResults.map(book => (
             <ListItem key={book.id}>
-            <Link to={"#!"}>
+            <a href={book.volumeInfo.infoLink} alt="link" target="_blank" rel="noopener noreferrer">
             <strong>
             {book.volumeInfo.title} by {book.volumeInfo.authors ? book.volumeInfo.authors[0]: "No Author Available"}
             </strong>
-            </Link>
+            </a>
             <SaveBtn onClick={() => this.saveBook(book.volumeInfo.title, book.volumeInfo.authors, book.volumeInfo.description, book.volumeInfo.imageLinks.thumbnail, book.volumeInfo.infoLink)} />
             </ListItem>
             ))}
