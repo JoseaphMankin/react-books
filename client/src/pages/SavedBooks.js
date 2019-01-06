@@ -46,19 +46,10 @@ class SavedBooks extends Component {
     if (this.state.title) {
 
       API.getGoogle(this.state.title)
-
-      // API.saveBook({
-      //   title: this.state.title,
-      //   author: this.state.author,
-      //   synopsis: this.state.synopsis
-      // })
-        // .then(res => this.loadBooks())
         .then(res => 
           {this.setState({searchResults: res.data.items}, () => console.log(this.state.searchResults))
 
         })
-            // console.log(res.data.items[0].volumeInfo.title, 
-            // res.data.items[0].volumeInfo.authors[0]))
         .catch(err => console.log(err));
     }
   };
@@ -73,8 +64,6 @@ class SavedBooks extends Component {
         image,
         link
       }).then(res => this.loadBooks())
-            // console.log(res.data.items[0].volumeInfo.title, 
-            // res.data.items[0].volumeInfo.authors[0]))
         .catch(err => console.log(err));
     
   };
@@ -95,8 +84,11 @@ class SavedBooks extends Component {
                       <strong>
                         {book.title} 
                       </strong> by {book.authors}
-                    </Link>
+                      <br></br>
+                    <br></br>
                     <img src={book.image} alt="Book"/>
+                    </Link>
+                    
 
                     <DeleteBtn onClick={() => this.deleteBook(book._id)} />
                   </ListItem>
